@@ -5,7 +5,7 @@ import { MoveHistory } from './components/MoveHistory';
 import { useGame } from './hooks/useGame';
 
 export default function App() {
-  const { game, score, history, play, reset, resetAll } = useGame();
+  const { game, score, history, playerNames, play, reset, resetAll, updatePlayerName } = useGame();
   const gameOver = game.status !== 'playing';
 
   return (
@@ -15,8 +15,13 @@ export default function App() {
       </header>
 
       <main className="app__main">
-        <ScoreBoard score={score} onReset={resetAll} />
-        <StatusBar game={game} />
+        <ScoreBoard 
+          score={score} 
+          playerNames={playerNames}
+          onReset={resetAll} 
+          onPlayerNameChange={updatePlayerName}
+        />
+        <StatusBar game={game} playerNames={playerNames} />
         <Board
           board={game.board}
           winningLine={game.winningLine}

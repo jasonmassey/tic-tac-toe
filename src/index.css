@@ -303,6 +303,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-muted);
+  text-align: center;
+  min-height: 1.2em;
 }
 
 .scoreboard__player--x .scoreboard__label {
@@ -311,6 +313,40 @@ body {
 
 .scoreboard__player--o .scoreboard__label {
   color: var(--color-o);
+}
+
+.scoreboard__name-clickable {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: background-color var(--transition);
+  display: inline-block;
+  min-width: 60px;
+}
+
+.scoreboard__name-clickable:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scoreboard__name-input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 4px;
+  text-align: center;
+  outline: none;
+  width: 100%;
+  min-width: 60px;
+}
+
+.scoreboard__name-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
 }
 
 .scoreboard__value {

@@ -3,6 +3,11 @@ export type Cell = Player | null;
 export type Board = Cell[];
 export type GameStatus = 'playing' | 'won' | 'draw';
 
+export interface PlayerNames {
+  X: string;
+  O: string;
+}
+
 export interface GameState {
   board: Board;
   currentPlayer: Player;

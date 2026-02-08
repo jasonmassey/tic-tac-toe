@@ -7,6 +7,7 @@ import {
   getAvailableMoves,
   formatCell,
 } from '../game-logic';
+import type { Board } from '../types';
 
 describe('createEmptyBoard', () => {
   it('returns a 9-cell board of nulls', () => {
@@ -22,31 +23,31 @@ describe('checkWinner', () => {
   });
 
   it('detects a row win', () => {
-    const board = ['X', 'X', 'X', null, 'O', 'O', null, null, null];
+    const board: Board = ['X', 'X', 'X', null, 'O', 'O', null, null, null];
     const result = checkWinner(board);
     expect(result).toEqual({ winner: 'X', line: [0, 1, 2] });
   });
 
   it('detects a column win', () => {
-    const board = ['O', 'X', null, 'O', 'X', null, 'O', null, null];
+    const board: Board = ['O', 'X', null, 'O', 'X', null, 'O', null, null];
     const result = checkWinner(board);
     expect(result).toEqual({ winner: 'O', line: [0, 3, 6] });
   });
 
   it('detects a diagonal win', () => {
-    const board = ['X', 'O', null, null, 'X', 'O', null, null, 'X'];
+    const board: Board = ['X', 'O', null, null, 'X', 'O', null, null, 'X'];
     const result = checkWinner(board);
     expect(result).toEqual({ winner: 'X', line: [0, 4, 8] });
   });
 
   it('detects anti-diagonal win', () => {
-    const board = [null, null, 'O', null, 'O', null, 'O', 'X', 'X'];
+    const board: Board = [null, null, 'O', null, 'O', null, 'O', 'X', 'X'];
     const result = checkWinner(board);
     expect(result).toEqual({ winner: 'O', line: [2, 4, 6] });
   });
 
   it('returns null when no winner yet', () => {
-    const board = ['X', 'O', 'X', null, null, null, null, null, null];
+    const board: Board = ['X', 'O', 'X', null, null, null, null, null, null];
     expect(checkWinner(board)).toBeNull();
   });
 });
@@ -57,12 +58,12 @@ describe('isDraw', () => {
   });
 
   it('returns true when board is full with no winner', () => {
-    const board = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
+    const board: Board = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
     expect(isDraw(board)).toBe(true);
   });
 
   it('returns false when board is full with a winner', () => {
-    const board = ['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'O'];
+    const board: Board = ['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'O'];
     expect(isDraw(board)).toBe(false);
   });
 });
@@ -103,7 +104,7 @@ describe('getAvailableMoves', () => {
   });
 
   it('returns empty array for a full board', () => {
-    const board = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
+    const board: Board = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
     expect(getAvailableMoves(board)).toEqual([]);
   });
 });

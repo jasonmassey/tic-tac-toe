@@ -1,16 +1,17 @@
-import type { GameState } from '../types';
+import type { GameState, PlayerNames } from '../types';
 
 interface StatusBarProps {
   game: GameState;
+  playerNames: PlayerNames;
 }
 
-export function StatusBar({ game }: StatusBarProps) {
+export function StatusBar({ game, playerNames }: StatusBarProps) {
   let message: string;
   let className = 'status-bar';
 
   switch (game.status) {
     case 'won':
-      message = `Player ${game.winner} wins!`;
+      message = `${playerNames[game.winner!]} wins!`;
       className += ' status-bar--won';
       break;
     case 'draw':
@@ -18,7 +19,7 @@ export function StatusBar({ game }: StatusBarProps) {
       className += ' status-bar--draw';
       break;
     default:
-      message = `Player ${game.currentPlayer}'s turn`;
+      message = `${playerNames[game.currentPlayer]}'s turn`;
       break;
   }
 

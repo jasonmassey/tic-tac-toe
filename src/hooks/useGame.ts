@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { createEmptyBoard, checkWinner, isDraw, makeMove } from '../game-logic';
-import type { GameState, Player, Score } from '../types';
+import type { GameState, Player, Score, PlayerNames } from '../types';
 
 function createInitialState(startingPlayer: Player = 'X'): GameState {
   return {
@@ -17,6 +17,11 @@ export function useGame() {
   const [game, setGame] = useState<GameState>(createInitialState());
   const [score, setScore] = useState<Score>({ X: 0, O: 0, draws: 0 });
   const [history, setHistory] = useState<GameState[]>([]);
+  const [playerNames, setPlayerNames] = useState<PlayerNames>({ X: 'Player X', O: 'Player O' });
+
+  const updatePlayerName = useCallback((player: Player, name: string) => {
+    setPlayerNames(prev => ({ ...prev, [player]: name.trim() || `Player ${player}` }));
+  }, []);
 
   const play = useCallback((index: number) => {
     setGame((prev) => {
@@ -78,5 +83,5 @@ export function useGame() {
     setHistory([]);
   }, []);
 
-  return { game, score, history, play, reset, resetAll };
+  return { game, score, history, playerNames, play, reset, resetAll, updatePlayerName };
 }
