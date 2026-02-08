@@ -139,7 +139,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   padding: 10px;
-  background: var(--color-border);
+  background: white;
   border-radius: var(--radius);
   width: 480px;
   aspect-ratio: 1;
