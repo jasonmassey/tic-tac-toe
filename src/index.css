@@ -57,6 +57,36 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: white;
+  text-shadow: 
+    -2px -2px 0 currentColor,
+    2px -2px 0 currentColor,
+    -2px 2px 0 currentColor,
+    2px 2px 0 currentColor;
+  animation: colorCycle 2s ease-in-out infinite;
+}
+
+@keyframes colorCycle {
+  0% { 
+    color: #ff6b9d; /* Pink */
+  }
+  16.66% { 
+    color: #4ecdc4; /* Cyan */
+  }
+  33.33% { 
+    color: #ffd93d; /* Yellow */
+  }
+  50% { 
+    color: #6c5ce7; /* Purple */
+  }
+  66.66% { 
+    color: #00b894; /* Green */
+  }
+  83.33% { 
+    color: #fd79a8; /* Light Pink */
+  }
+  100% { 
+    color: #ff6b9d; /* Back to Pink */
+  }
 }
 
 .app__main {
