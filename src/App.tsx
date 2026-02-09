@@ -2,6 +2,7 @@ import { Board } from './components/Board';
 import { StatusBar } from './components/StatusBar';
 import { ScoreBoard } from './components/ScoreBoard';
 import { MoveHistory } from './components/MoveHistory';
+import { ThemeToggle } from './components/ThemeToggle';
 import { useGame } from './hooks/useGame';
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
     <div className="app">
       <header className="app__header">
         <h1 className="app__title">Tic Tac Toe</h1>
+        <ThemeToggle />
       </header>
 
       <main className="app__main">
