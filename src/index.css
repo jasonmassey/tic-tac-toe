@@ -71,20 +71,16 @@ body {
   background: var(--color-background);
   color: var(--color-text);
   transition: all var(--transition);
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: 
-    "header header"
-    "main sidebar";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
   padding: 1rem;
 }
 
 .app__header {
-  grid-area: header;
   width: 100%;
+  max-width: 600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,18 +112,17 @@ body {
 }
 
 .app__main {
-  grid-area: main;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
   max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .app__sidebar {
-  grid-area: sidebar;
-  min-width: 250px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .app__play-again {
@@ -493,11 +488,6 @@ body {
 
 @media (max-width: 768px) {
   .app {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "header"
-      "main"
-      "sidebar";
     gap: 1rem;
   }
 
