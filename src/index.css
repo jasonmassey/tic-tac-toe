@@ -141,6 +141,8 @@ body {
   cursor: pointer;
   transition: all var(--transition);
   box-shadow: var(--shadow);
+  display: block;
+  margin: 0 auto;
 }
 
 .app__play-again:hover {
@@ -159,6 +161,8 @@ body {
   background: var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .square {
@@ -222,6 +226,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .status-bar--winner {
