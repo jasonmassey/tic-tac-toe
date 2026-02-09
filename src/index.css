@@ -229,70 +229,140 @@ body {
 
 /* ---- Score Board ---- */
 
-.score-board {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+.scoreboard {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.score-board__player {
+.scoreboard__scores {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.scoreboard__player {
   text-align: center;
-}
-
-.score-board__name {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin-bottom: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  background: transparent;
-  border: 1px solid transparent;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
   border-radius: calc(var(--radius) / 2);
-  color: var(--color-text);
   transition: all var(--transition);
 }
 
-.score-board__name:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  background: var(--color-surface-elevated);
+.scoreboard__player--x {
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), transparent);
 }
 
-.score-board__score {
-  font-size: 2rem;
-  font-weight: bold;
+.scoreboard__player--o {
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);
 }
 
-.score-board__score--x {
-  color: var(--color-x);
+.scoreboard__player--draws {
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), transparent);
 }
 
-.score-board__score--o {
-  color: var(--color-o);
-}
-
-.score-board__reset {
-  padding: 0.5rem 1rem;
+.scoreboard__label {
   font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.scoreboard__name-clickable {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: calc(var(--radius) / 2);
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  min-height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreboard__name-clickable:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+}
+
+.scoreboard__name-input {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-accent);
+  border-radius: calc(var(--radius) / 2);
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  transition: all var(--transition);
+  min-width: 80px;
+  max-width: 120px;
+  outline: none;
+  font-family: inherit;
+}
+
+.scoreboard__name-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.scoreboard__value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreboard__player--x .scoreboard__value {
+  color: var(--color-x);
+  text-shadow: var(--neon-glow) var(--color-x);
+}
+
+.scoreboard__player--o .scoreboard__value {
+  color: var(--color-o);
+  text-shadow: var(--neon-glow) var(--color-o);
+}
+
+.scoreboard__player--draws .scoreboard__value {
+  color: var(--color-text-muted);
+}
+
+.scoreboard__reset {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-text-muted);
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   cursor: pointer;
   transition: all var(--transition);
+  margin: 0 auto;
+  display: block;
 }
 
-.score-board__reset:hover {
+.scoreboard__reset:hover {
   color: var(--color-text);
   border-color: var(--color-accent);
   background: var(--color-surface-elevated);
+  transform: translateY(-1px);
 }
-
 /* ---- Move History ---- */
 
 .move-history {
@@ -432,9 +502,13 @@ body {
     font-size: 2rem;
   }
 
-  .score-board {
+  .scoreboard__scores {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .scoreboard__player {
+    min-width: 100px;
   }
 
   .square {
