@@ -72,6 +72,7 @@ body {
   color: var(--color-text);
   transition: all var(--transition);
   display: grid;
+  justify-items: center;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr;
   grid-template-areas: 
@@ -83,6 +84,7 @@ body {
 
 .app__header {
   grid-area: header;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
