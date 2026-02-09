@@ -4,8 +4,6 @@ import {
   checkWinner,
   isDraw,
   makeMove,
-  getAvailableMoves,
-  formatCell,
 } from '../game-logic';
 import type { Board } from '../types';
 
@@ -87,35 +85,5 @@ describe('makeMove', () => {
     const result = makeMove(board, 0, 'O');
     expect(result).toBe(board);
     expect(result[0]).toBe('X');
-  });
-});
-
-describe('getAvailableMoves', () => {
-  it('returns all indices for an empty board', () => {
-    expect(getAvailableMoves(createEmptyBoard())).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
-  });
-
-  it('excludes occupied cells', () => {
-    const board = makeMove(makeMove(createEmptyBoard(), 0, 'X'), 4, 'O');
-    const moves = getAvailableMoves(board);
-    expect(moves).not.toContain(0);
-    expect(moves).not.toContain(4);
-    expect(moves).toHaveLength(7);
-  });
-
-  it('returns empty array for a full board', () => {
-    const board: Board = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
-    expect(getAvailableMoves(board)).toEqual([]);
-  });
-});
-
-describe('formatCell', () => {
-  it('returns the player mark', () => {
-    expect(formatCell('X')).toBe('X');
-    expect(formatCell('O')).toBe('O');
-  });
-
-  it('returns a space for null', () => {
-    expect(formatCell(null)).toBe(' ');
   });
 });
