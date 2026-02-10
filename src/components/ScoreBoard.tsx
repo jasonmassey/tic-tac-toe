@@ -101,6 +101,12 @@ export function ScoreBoard({ score, playerNames, onReset, onPlayerNameChange }: 
           <span className="scoreboard__value">{score.O}</span>
         </div>
       </div>
+      {score.gamesPlayed > 0 && (
+        <div className="scoreboard__games-counter">
+          <span className="scoreboard__games-label">Games played this session: </span>
+          <span className="scoreboard__games-value">{score.gamesPlayed}</span>
+        </div>
+      )}
       {total > 0 && (
         <button className="scoreboard__reset" onClick={onReset}>
           Reset Scores

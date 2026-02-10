@@ -21,4 +21,5 @@ export interface Score {
   X: number;
   O: number;
   draws: number;
+  gamesPlayed: number;
 }

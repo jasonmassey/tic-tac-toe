@@ -15,7 +15,7 @@ function createInitialState(startingPlayer: Player = 'X'): GameState {
 
 export function useGame() {
   const [game, setGame] = useState<GameState>(createInitialState());
-  const [score, setScore] = useState<Score>({ X: 0, O: 0, draws: 0 });
+  const [score, setScore] = useState<Score>({ X: 0, O: 0, draws: 0, gamesPlayed: 0 });
   const [history, setHistory] = useState<GameState[]>([]);
   const [playerNames, setPlayerNames] = useState<PlayerNames>({ X: 'Player X', O: 'Player O' });
 
@@ -31,7 +31,7 @@ export function useGame() {
       const result = checkWinner(newBoard);
 
       if (result) {
-        setScore((s) => ({ ...s, [result.winner]: s[result.winner] + 1 }));
+        setScore((s) => ({ ...s, [result.winner]: s[result.winner] + 1, gamesPlayed: s.gamesPlayed + 1 }));
         const newState: GameState = {
           board: newBoard,
           currentPlayer: prev.currentPlayer,
@@ -45,7 +45,7 @@ export function useGame() {
       }
 
       if (isDraw(newBoard)) {
-        setScore((s) => ({ ...s, draws: s.draws + 1 }));
+        setScore((s) => ({ ...s, draws: s.draws + 1, gamesPlayed: s.gamesPlayed + 1 }));
         const newState: GameState = {
           board: newBoard,
           currentPlayer: prev.currentPlayer,
@@ -79,7 +79,7 @@ export function useGame() {
 
   const resetAll = useCallback(() => {
     setGame(createInitialState());
-    setScore({ X: 0, O: 0, draws: 0 });
+    setScore({ X: 0, O: 0, draws: 0, gamesPlayed: 0 });
     setHistory([]);
   }, []);
 
