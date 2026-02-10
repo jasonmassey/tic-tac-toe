@@ -31,6 +31,7 @@ export function StatusBar({ game, playerNames }: StatusBarProps) {
           {game.currentPlayer}
         </span>
       )}
+      <span className="status-bar__move-count">Moves: {game.moveCount}</span>
     </div>
   );
 }
